@@ -1,0 +1,57 @@
+<div class="row my-4">
+    <div class="col-md-6">
+        <h2>Liste des taches</h2><br>
+        <input (keyup)="Rechercher()" [(ngModel)]="searchText" placeholder="Rechercher..." type="text" class="form-control">
+    </div>
+    <div class="col-md-6 text-right">
+        <button *ngIf="!showForm" (click)="showForm = !showForm" class="btn btn-primary btn-sm">
+            <i class="fa fa-plus"></i>&nbsp;<strong> Ajouter</strong>
+        </button>
+        <button *ngIf="showForm" (click)="showForm = !showForm" class="btn btn-danger btn-sm">
+            <i class="fa fa-times"></i>&nbsp;<strong> Cacher</strong>
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 my-2">
+        <table class="table table-striped table-hover">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tache of resultSearch">
+                        <td scope="row">{{ tache.id }}</td>
+                        <td>{{ tache.title }}</td>
+                        <td>{{ tache.author }}</td>
+                        <td>
+                            <button (click)="deleteTache(tache.id)" class="btn btn-danger mr-3"><i class="fa fa-trash"></i></button>
+                            <button (click)="edit(tache)" class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+        </table>
+    </div>
+    <div class="col-md-4 my-2" *ngIf="showForm">
+        <div class="form-group">
+          <label for="titre">Titre :</label>
+          <input [(ngModel)]="maTache.title" id="titre" type="text" class="form-control" placeholder="Le titre de la tache">
+        </div>
+        <div class="form-group">
+            <label for="auteur">Auteur :</label>
+            <input [(ngModel)]="maTache.author" id="auteur" type="text" class="form-control" placeholder="L'auteur de la taches">
+        </div>
+        <button *ngIf="editForm" (click)="modifier()" class="btn btn-block btn-warning btn-lg">
+            <i class="fa fa-refresh"></i>&nbsp;<strong>Modifier</strong>
+        </button>
+        <button *ngIf="!editForm" (click)="envoyer()" class="btn btn-block btn-success btn-lg">
+            <i class="fa fa-send"></i>&nbsp;<strong>Valider</strong>
+        </button>
+    </div>
+</div>
