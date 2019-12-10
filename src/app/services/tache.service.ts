@@ -7,11 +7,11 @@ import { Tache } from '../models/tache';
 })
 export class TacheService {
 
-  apiURL = "http://localhost:3002/taches";
+  apiURL = "http://localhost:3000/taches";
 
   constructor( private http: HttpClient) { }
 
-  findAll(){
+  _findAll(){
     return this.http.get<Tache[]>(this.apiURL);
   }
   delete(id){

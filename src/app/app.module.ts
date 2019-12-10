@@ -6,12 +6,14 @@ import { NavbarComponent } from './compenents/navbar/navbar.component';
 import { TachesComponent } from './compenents/taches/taches.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
+import { FooterComponent } from './compenents/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    TachesComponent
+    TachesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
